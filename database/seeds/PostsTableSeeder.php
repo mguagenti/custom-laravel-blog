@@ -16,8 +16,8 @@ class PostsTableSeeder extends Seeder {
 
         for($i = 0; $i < 20; $i++) {
             $jsonMeta = [
-                'title'         => $faker->word,
-                'description'   => $faker->text(16),
+                'title'         => $faker->sentence,
+                'description'   => $faker->text(46),
                 'author'        => $faker->name,
             ];
 
@@ -26,8 +26,8 @@ class PostsTableSeeder extends Seeder {
             Post::create([
                 'slug'              => $faker->word,
                 'meta'              => $meta,
-                'content'           => $faker->paragraph,
-                'published_at_date' => Carbon::now()
+                'content'           => $faker->paragraph(64),
+                'published_at_date' => Carbon::now()->addWeeks($i)
             ]);
         }
     }
