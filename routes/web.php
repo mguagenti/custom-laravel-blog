@@ -11,16 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    $posts = \App\Post::get();
-    return view('welcome', [
-        'posts' => $posts
-    ]);
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/', 'PostsController@home');
 Route::get('/post/{slug}', 'PostsController@post');
 Route::get('/posts/{page}', 'PostsController@paginate');
