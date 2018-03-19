@@ -87,5 +87,28 @@ body {
     margin: 45px 0px;
     font-size: 1em;
     line-height: 2.4em;
+    p {
+      margin-bottom: 30px;
+    }
+  }
+}
+.pagination {
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 40px 0px;
+  .page-item {
+    &:nth-child(1) {
+      float: left;
+    }
+    &:nth-child(2) {
+      float: right;
+    }
+    a {
+      color: $brand-light-blue;
+    }
+  }
+  .page-link {
+    text-decoration: none;
   }
 }

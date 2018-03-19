@@ -27,18 +27,24 @@ class PostsController extends Controller {
         $post = Post::where('slug', $slug)->firstOrFail();
 
         return view('post', [
-            'post' => $post
+            'post'      => $post
         ]);
     }
 
-    public function home() {
+    /**
+     * Returns the home page with the posts in order by date.
+     *
+     * @param int $limit The number of posts to return.
+     *
+     * @return View
+     */
+    public function home($limit = 5) {
         $posts = Post::where('published_at_date', '<', Carbon::now())
             ->orderBy('published_at_date', 'dsc')
-            ->take(10)
-            ->get();
+            ->simplePaginate($limit);
 
         return view('welcome', [
-            'posts' => $posts
+            'posts'     => $posts
         ]);
     }
 
