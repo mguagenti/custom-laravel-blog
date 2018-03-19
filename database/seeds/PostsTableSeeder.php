@@ -21,13 +21,11 @@ class PostsTableSeeder extends Seeder {
                 'author'        => $faker->name,
             ];
 
-            $meta = json_encode($jsonMeta);
-
             Post::create([
                 'slug'              => $faker->word,
-                'meta'              => $meta,
+                'meta'              => $jsonMeta,
                 'content'           => $faker->paragraph(64),
-                'published_at_date' => Carbon::now()->addWeeks($i)
+                'published_at_date' => Carbon::now()
             ]);
         }
     }
