@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+body {
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: 100%;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  body {
+    font-size: 80%;
+  }
+}
+
+.link {
+  color: #007bff;
+  text-transform: uppercase;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.link:after {
+  content: ' \2192';
+}
+
+.nav {
+  width: 100%;
+  background-color: #ffffff;
+  display: inline-block;
+}
+
+.nav-brand {
+  display: inline-block;
+  padding: 32px 18px;
+}
+
+.nav-brand a {
+  font-family: "Merriweather", serif;
+  color: #007bff;
+}
+
+.nav-inner {
+  float: right;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-inner li {
+  float: left;
+}
+
+.nav-inner li a {
+  display: block;
+  text-align: center;
+  padding: 32px 18px;
+  text-decoration: none;
+  color: #6d6d6d;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0px auto;
+}
+
+@media (max-width: 700px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+.post {
+  color: #282828;
+}
+
+.post-hero {
+  background-color: #007bff;
+}
+
+.post-hero-inner {
+  padding: 12px 0px;
+}
+
+.post-single {
+  margin-top: 55px;
+}
+
+.post-title {
+  font-family: "Merriweather", serif;
+  text-decoration: underline;
+  font-size: 6em;
+  color: #ffffff;
+}
+
+.post-author {
+  background-color: #f2f2f2;
+  padding: 20px 0px;
+  text-align: center;
+}
+
+.post-body {
+  margin: 45px 0px;
+  font-size: 1em;
+  line-height: 2.4em;
+}
+
