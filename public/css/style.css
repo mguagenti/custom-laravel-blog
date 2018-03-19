@@ -104,3 +104,30 @@ body {
   line-height: 2.4em;
 }
 
+.post-body p {
+  margin-bottom: 30px;
+}
+
+.pagination {
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 40px 0px;
+}
+
+.pagination .page-item:nth-child(1) {
+  float: left;
+}
+
+.pagination .page-item:nth-child(2) {
+  float: right;
+}
+
+.pagination .page-item a {
+  color: #007bff;
+}
+
+.pagination .page-link {
+  text-decoration: none;
+}
+

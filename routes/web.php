@@ -13,7 +13,10 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home');
+Route::get('/admin/draft', 'HomeController@draft');
+Route::post('/admin/draft', 'HomeController@save');
+Route::get('/admin/trash/{slug}', 'HomeController@trash');
 
 Route::get('/', 'PostsController@home');
 Route::get('/post/{slug}', 'PostsController@post');

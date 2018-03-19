@@ -15,6 +15,15 @@
                     @endif
 
                     You are logged in!
+
+                    <a class="btn-light" href="/admin/draft">New post</a>
+
+                    @foreach($posts as $post)
+                        <h3>{{ $post->meta['title'] }}</h3>
+                        <a class="btn-light" href="/admin/draft">Edit</a>
+                        <a class="btn-light" href="/admin/trash/{{ $post->slug }}">Trash</a>
+                        <hr />
+                    @endforeach
                 </div>
             </div>
         </div>
