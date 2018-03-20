@@ -15,9 +15,9 @@
         </div>
         <div class="container">
             <div class="post-body">{!! $post->content !!}</div>
-            <div class="post-author">
-                <p>{{ $post->meta['author'] }} | {{ $post->published_at_date }}</p>
-            </div>
+        </div>
+        <div class="post-author">
+            <p>{{ $post->meta['author'] }} | {{ $post->published_at_date }}</p>
         </div>
     </div>
 @endsection

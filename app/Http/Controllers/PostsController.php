@@ -27,7 +27,7 @@ class PostsController extends Controller {
         $post = Post::where('slug', $slug)->firstOrFail();
 
         return view('post', [
-            'post'      => $post
+            'post' => $post
         ]);
     }
 
@@ -44,7 +44,7 @@ class PostsController extends Controller {
             ->simplePaginate($limit);
 
         return view('welcome', [
-            'posts'     => $posts
+            'posts' => $posts
         ]);
     }
 

@@ -10,7 +10,6 @@
 
     <title>{{ $title }} | {{ config('app.name', 'Blog')  }}</title>
     <meta name="description" content="{{ $meta_description }}">
-    <meta name="keywords" content="">
     <meta name="author" content="{{ $author }}">
 
     <!-- Fonts -->

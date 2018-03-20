@@ -18,12 +18,17 @@
 
                     <a class="btn-light" href="/admin/draft">New post</a>
 
+                    <hr />
+
                     @foreach($posts as $post)
                         <h3>{{ $post->meta['title'] }}</h3>
                         <a class="btn-light" href="/admin/draft">Edit</a>
                         <a class="btn-light" href="/admin/trash/{{ $post->slug }}">Trash</a>
                         <hr />
                     @endforeach
+
+                    {{ $posts->render() }}
+
                 </div>
             </div>
         </div>

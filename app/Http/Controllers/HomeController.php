@@ -23,7 +23,7 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $posts = Post::get()->take(10);
+        $posts = Post::paginate(10);
         return view('home', [
             'posts'     => $posts
         ]);
@@ -46,7 +46,7 @@ class HomeController extends Controller {
     public function save(Request $request) {
         $meta = [
             'title'         => $request->title,
-            'author'        => 'Nobody',
+            'author'        => \Auth::user()->name,
             'description'   => $request->description
         ];
 
