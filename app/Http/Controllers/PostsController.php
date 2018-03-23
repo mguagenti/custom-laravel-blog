@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Carbon\Carbon as Carbon;
-use App\Post;
+use Blog\Post;
 
 /**
  * Class PostsController
  *
  * Gets posts and returns views based on post IDs
  *
- * @package App\Http\Controllers
+ * @package Blog\Http\Controllers
  */
 class PostsController extends Controller {
 

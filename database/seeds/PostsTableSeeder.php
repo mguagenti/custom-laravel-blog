@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon as Carbon;
-use App\Post;
+use Blog\Post;
 
 class PostsTableSeeder extends Seeder {
 

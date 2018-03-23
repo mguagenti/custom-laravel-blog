@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon as Carbon;
-use App\Post;
+use Blog\Post;
 
-class HomeController extends Controller {
+class AdminController extends Controller {
 
     /**
      * Create a new controller instance.
@@ -20,10 +20,11 @@ class HomeController extends Controller {
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index() {
         $posts = Post::paginate(10);
+
         return view('home', [
             'posts'     => $posts
         ]);
@@ -65,7 +66,7 @@ class HomeController extends Controller {
     /**
      * Deletes a post based on its slug.
      *
-     * @param $slug The slug of the post to delete.
+     * @param $slug     The slug of the post to delete.
      *
      * @return Redirect Redirect the user back to the admin page.
      */
