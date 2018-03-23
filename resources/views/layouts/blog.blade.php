@@ -10,7 +10,9 @@
 
     <title>{{ $title }} | {{ config('app.name', 'Blog')  }}</title>
     <meta name="description" content="{{ $meta_description }}">
-    <meta name="author" content="{{ $author }}">
+    @if(!empty($author))
+        <meta name="author" content="{{ $author }}">
+    @endif
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -33,6 +35,7 @@
         </div>
 
         @yield('content')
+
     </main>
 </body>
 </html>
