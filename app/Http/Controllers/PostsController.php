@@ -24,7 +24,9 @@ class PostsController extends Controller {
      * @return View
      */
     public function post(String $slug) {
-        $post = Post::where('slug', $slug)->firstOrFail();
+        $post = Post::where('slug', $slug)
+            ->orWhere('id', $slug)
+            ->firstOrFail();
 
         return view('post', [
             'post' => $post
@@ -39,9 +41,7 @@ class PostsController extends Controller {
      * @return View
      */
     public function home($limit = 5) {
-        $posts = Post::where('published_at_date', '<', Carbon::now())
-            ->orderBy('published_at_date', 'dsc')
-            ->simplePaginate($limit);
+        $posts = Post::published()->simplePaginate($limit);
 
         return view('welcome', [
             'posts' => $posts
