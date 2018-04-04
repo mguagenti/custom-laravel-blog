@@ -14,7 +14,7 @@ $factory->define(Blog\Post::class, function (Faker $faker) {
             'description'   => 'This is a test post.'
         ],
         'content'           => 'Test content.',
-        'published_at_date' => Carbon::now(),
+        'published_at_date' => Carbon::parse('-1 week'),
     ];
 });
 

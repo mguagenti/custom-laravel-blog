@@ -23,6 +23,7 @@ class PostsTableSeeder extends Seeder {
 
             Post::create([
                 'slug'              => $faker->word,
+                'user_id'           => 1,
                 'meta'              => $jsonMeta,
                 'content'           => $faker->paragraph(64),
                 'published_at_date' => Carbon::now()
