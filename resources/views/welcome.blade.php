@@ -16,10 +16,12 @@
     <div class="container">
         @foreach($posts as $post)
             <div class="post-single">
-                <h2>{{ $post->meta['title'] }}</h2>
-                <p class="publish-date">{{ $post->published_at_date }}</p>
-                <p class="excerpt">{{ substr(strip_tags($post->content), 0, 460) . '...' }}</p>
-                <a href="/post/{{ $post->slug }}" class="link">Read more</a>
+                <div class="inner">
+                    <h2>{{ $post->meta['title'] }}</h2>
+                    <p class="publish-date">{{ $post->post_date }}</p>
+                    <p class="excerpt">{{ substr(strip_tags($post->content), 0, 460) . '...' }}</p>
+                    <a href="/post/{{ $post->slug }}" class="link">Read more</a>
+                </div>
             </div>
         @endforeach
     </div>
