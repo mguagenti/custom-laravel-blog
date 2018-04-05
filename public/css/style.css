@@ -83,6 +83,12 @@ body {
 
 .post-single {
   margin-top: 55px;
+  border: #ced4da 1px;
+  border-radius: 3px;
+}
+
+.post-single .inner {
+  padding: 15px;
 }
 
 .post-single .excerpt {

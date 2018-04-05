@@ -5,14 +5,16 @@ namespace Blog\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreBlogPost extends FormRequest {
+class StoreBlogPost extends FormRequest
+{
 
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return true;
     }
 
@@ -21,25 +23,27 @@ class StoreBlogPost extends FormRequest {
      *
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
         return [
-            'slug'  => [
+            'slug' => [
                 'required',
                 'max:255',
-                Rule::unique('posts')->ignore($this->post->slug, 'slug'),
+                Rule::unique('posts')->ignore($this->post->slug ?? null, 'slug'),
             ],
-            'meta.title'            => 'required|max:255',
-            'meta.author'           => 'max:255',
-            'meta.description'      => 'required|max:255',
-            'content'               => 'required',
-            'published_at_date'     => 'nullable|date:Y-m-d'
+            'meta.title' => 'sometimes|required|max:255',
+            'meta.author' => 'max:255',
+            'meta.description' => 'sometimes|required|max:255',
+            'content' => 'sometimes|required',
+            'published_at_date' => 'nullable|date:Y-m-d',
         ];
     }
 
     /**
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function getValidatorInstance() {
+    public function getValidatorInstance()
+    {
         $this->formatSlug();
 
         return parent::getValidatorInstance();
@@ -48,7 +52,8 @@ class StoreBlogPost extends FormRequest {
     /**
      * Slugs should be modified to contain the proper characters before validation.
      */
-    protected function formatSlug() {
+    protected function formatSlug()
+    {
         $this->merge([
             'slug' => str_slug($this->request->get('slug'))
         ]);

@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import axios from 'axios'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -18,5 +19,12 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        results: []
+    },
+    mounted() {
+        axios.get("http://blog.test/api/posts")
+            .then(response => {this.results = response.data})
+    }
 });

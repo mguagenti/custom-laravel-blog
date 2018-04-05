@@ -2,10 +2,8 @@
 
 namespace Blog\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\View\View;
-use Carbon\Carbon as Carbon;
 use Blog\Post;
+use Illuminate\View\View;
 
 /**
  * Class PostsController
@@ -14,7 +12,8 @@ use Blog\Post;
  *
  * @package Blog\Http\Controllers
  */
-class PostsController extends Controller {
+class PostsController extends Controller
+{
 
     /**
      * Returns a post based on the slug.
@@ -23,7 +22,8 @@ class PostsController extends Controller {
      *
      * @return View
      */
-    public function post(String $slug) {
+    public function post(String $slug)
+    {
         $post = Post::where('slug', $slug)
             ->orWhere('id', $slug)
             ->firstOrFail();
@@ -40,7 +40,8 @@ class PostsController extends Controller {
      *
      * @return View
      */
-    public function home($limit = 5) {
+    public function home($limit = 5)
+    {
         $posts = Post::published()->simplePaginate($limit);
 
         return view('welcome', [

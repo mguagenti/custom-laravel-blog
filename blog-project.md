@@ -17,6 +17,11 @@
 - Update tags in a centralized place
 - Generate a sitemap
 - Have SEO friendly meta-tags
+{
+  "title": "Some random post",
+  "description": "Talking about my day, and how I program.",
+  "author": "Mr. Random"
+}
 
 ## Phase 2
 - Publish content on a certian date/time

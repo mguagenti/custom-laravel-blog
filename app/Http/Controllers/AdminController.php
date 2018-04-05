@@ -3,22 +3,23 @@
 namespace Blog\Http\Controllers;
 
 use Blog\Http\Requests\StoreBlogPost;
-use Illuminate\Http\Request;
-use Carbon\Carbon as Carbon;
 use Blog\Post;
+use Carbon\Carbon as Carbon;
 
 /**
  * Class AdminController
  * @package Blog\Http\Controllers
  */
-class AdminController extends Controller {
+class AdminController extends Controller
+{
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -27,18 +28,20 @@ class AdminController extends Controller {
      *
      * @return View
      */
-    public function index() {
+    public function index()
+    {
         $posts = Post::paginate(10);
 
         return view('home', [
-            'posts'     => $posts
+            'posts' => $posts
         ]);
     }
 
     /**
      * Save and update drafts.
      */
-    public function draft() {
+    public function draft()
+    {
         return view('draft');
     }
 
@@ -49,18 +52,19 @@ class AdminController extends Controller {
      *
      * @return Redirect
      */
-    public function save(StoreBlogPost $request) {
+    public function save(StoreBlogPost $request)
+    {
         $meta = [
-            'title'         => $request->title,
-            'author'        => \Auth::user()->name,
-            'description'   => $request->description
+            'title' => $request->title,
+            'author' => \Auth::user()->name,
+            'description' => $request->description
         ];
 
         $post = Post::create([
-            'slug'              => $request->slug,
-            'user_id'           => \Auth::user()->id,
-            'meta'              => $meta,
-            'content'           => $request->content,
+            'slug' => $request->slug,
+            'user_id' => \Auth::user()->id,
+            'meta' => $meta,
+            'content' => $request->content,
             'published_at_date' => Carbon::parse($request->post_date)
         ]);
 

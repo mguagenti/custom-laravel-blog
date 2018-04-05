@@ -23,3 +23,9 @@ $factory->state(Blog\Post::class, 'unpublished', function (Faker $faker) {
         'published_at_date' => null
     ];
 });
+
+$factory->state(Blog\Post::class, 'published', function (Faker $faker) {
+    return [
+        'published_at_date' => '2018-03-24 02:56:54'
+    ];
+});

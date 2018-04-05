@@ -211,8 +211,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
-        'Form' => 'Collective\Html\FormFacade',
-        'Html' => 'Collective\Html\HtmlFacade',
+//        'Form' => 'Collective\Html\FormFacade',
+//        'Html' => 'Collective\Html\HtmlFacade',
 
     ],
 

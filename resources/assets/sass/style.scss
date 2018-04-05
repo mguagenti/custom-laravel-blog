@@ -68,6 +68,11 @@ body {
   }
   &-single {
     margin-top: 55px;
+    border: #ced4da 1px;
+    border-radius: 3px;
+    .inner {
+      padding: 15px;
+    }
     .excerpt {
       line-height: 2.4em;
     }

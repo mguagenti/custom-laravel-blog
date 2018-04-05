@@ -14,6 +14,7 @@
                             </div>
                         @endif
                         {!! Form::open(['url' => '/admin/draft/']) !!}
+
                             {!! Form::label('title', 'Post title'); !!}
                             {!! Form::text('title', null, ['class' => 'form-control']); !!}
 

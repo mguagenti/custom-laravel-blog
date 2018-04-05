@@ -2,12 +2,10 @@
 
 namespace Blog\Http\Controllers\Api;
 
+use Blog\Http\Controllers\Controller;
 use Blog\Http\Requests\StoreBlogPost;
 use Blog\Post;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Blog\Http\Controllers\Controller;
-use Illuminate\Session\Store;
 
 class PostsController extends Controller
 {
@@ -36,7 +34,7 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreBlogPost                $request
+     * @param  StoreBlogPost $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreBlogPost $request)
@@ -47,7 +45,7 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Blog\Post  $post
+     * @param  \Blog\Post $post
      * @return \Blog\Post
      */
     public function show(Post $post)
@@ -62,9 +60,9 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Blog\Post  $post
-     * @return \Illuminate\Http\Response
+     * @param  StoreBlogPost $request
+     * @param  \Blog\Post $post
+     * @return \Blog\Post
      */
     public function update(StoreBlogPost $request, Post $post)
     {
@@ -77,17 +75,19 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Blog\Post  $post
+     * @param  \Blog\Post $post
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post)
     {
         try {
             $post->delete();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return response()->json(null, 410);
         }
 
         return response()->json(null, 204);
     }
+
+
 }

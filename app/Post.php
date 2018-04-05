@@ -2,12 +2,13 @@
 
 namespace Blog;
 
-use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 use GrahamCampbell\Markdown\Facades\Markdown;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon as Carbon;
 
-class Post extends Model {
+class Post extends Model
+{
 
     use Traits\Uuids;
     use SoftDeletes;
@@ -45,6 +46,8 @@ class Post extends Model {
     ];
 
     /**
+     * Dates to parse as carbon objects.
+     *
      * @var array
      */
     protected $dates = [
@@ -56,7 +59,8 @@ class Post extends Model {
      *
      * @return mixed
      */
-    public function getRouteKey() {
+    public function getRouteKeyName()
+    {
         return 'slug';
     }
 
@@ -66,10 +70,11 @@ class Post extends Model {
      * @param  string $value
      * @return string        Markdown converted to HTML
      */
-    public function getContentAttribute($value) {
+    public function getContentAttribute($value)
+    {
         try {
             return Markdown::convertToHtml($value);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return $value;
         }
     }
@@ -77,12 +82,11 @@ class Post extends Model {
     /**
      * Get the post published at date as a human readable day/time string.
      *
-     * @param  $value
      * @return string
      */
-    public function getPostDateAttribute($value) {
-        $date = Carbon::parse($value);
-        return $date->toDayDateTimeString();
+    public function getPostDateAttribute()
+    {
+        return $this->published_at_date->format('F j, Y');
     }
 
     /**
@@ -90,21 +94,9 @@ class Post extends Model {
      *
      * @param $value
      */
-    public function setSlugAttribute($value) {
+    public function setSlugAttribute($value)
+    {
         $this->attributes['slug'] = str_slug($value);
-    }
-
-    /**
-     * Returns the post UUID if slug is empty.
-     *
-     * @param $value
-     * @return mixed
-     */
-    public function getSlugAttribute($value) {
-        if (empty($value)) {
-            return $this->id;
-        }
-        return $value;
     }
 
     /**
@@ -112,7 +104,8 @@ class Post extends Model {
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
@@ -122,9 +115,11 @@ class Post extends Model {
      * @param $query
      * @return mixed
      */
-    public function scopePublished($query) {
+    public function scopePublished($query)
+    {
         return $query->where('published_at_date', '<', Carbon::now())
-                     ->orderBy('published_at_date', 'dsc');
+            ->orderBy('published_at_date', 'dsc');
     }
+
 
 }
