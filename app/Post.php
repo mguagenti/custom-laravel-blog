@@ -121,5 +121,19 @@ class Post extends Model
             ->orderBy('published_at_date', 'dsc');
     }
 
+    /**
+     * Check if an individual post is published or not.
+     *
+     * @return bool
+     */
+    public function isPublished()
+    {
+        if ($this->published_at_date == null || $this->published_at_date->gt(Carbon::now())) {
+            return false;
+        }
+
+        return true;
+    }
+
 
 }

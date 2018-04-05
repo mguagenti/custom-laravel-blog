@@ -44,6 +44,13 @@ class BlogApiTest extends TestCase
 
     /** @test */
     public function can_create_a_new_post()
+    {
+        $post = factory(Post::class)->make();
+
+        $response = $this->json('POST', "/api/posts/", $post->toArray());
+        $response->assertStatus(201);
+        $response->assertJsonFragment($post->toArray());
+    }
 
 
 }
