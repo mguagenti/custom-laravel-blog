@@ -50,11 +50,11 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-        if ($post->published_at_date == null || $post->published_at_date->gt(Carbon::now())) {
-            return response()->json(null, 404);
+        if ($post->isPublished()) {
+            return $post;
         }
 
-        return $post;
+        return response()->json(null, 404);
     }
 
     /**

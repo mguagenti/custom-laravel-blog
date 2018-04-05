@@ -2,6 +2,7 @@
 
 namespace Blog\Http\Controllers;
 
+use function abort;
 use Blog\Post;
 use Illuminate\View\View;
 
@@ -22,15 +23,15 @@ class PostsController extends Controller
      *
      * @return View
      */
-    public function post(String $slug)
+    public function post(Post $post)
     {
-        $post = Post::where('slug', $slug)
-            ->orWhere('id', $slug)
-            ->firstOrFail();
+        if ($post->isPublished()) {
+            return view('post', [
+                'post' => $post
+            ]);
+        }
 
-        return view('post', [
-            'post' => $post
-        ]);
+        return abort(404);
     }
 
     /**
